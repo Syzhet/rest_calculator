@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  calc_api:
+    image: ${REP_NAME}/rest_calc:${TAG}
+    ports:
+      - "${PORT}:8000"
