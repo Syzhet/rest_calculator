@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends, status
 from fastapi.responses import PlainTextResponse, JSONResponse
 from fastapi.exceptions import RequestValidationError
 
-from models import QueryPhrase, BodyPhrase
+from .models import QueryPhrase, BodyPhrase
 
 
 app: FastAPI = FastAPI()
@@ -18,10 +18,8 @@ async def validation_exception_handler(
     """Exception handler for data validation."""
 
     if request.scope['method'] == 'POST':
-        print('------------------')
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
-            # content=str(exc)
             content={'detail': str(exc).split('\n')[-1]}
         )
     return PlainTextResponse(
@@ -49,9 +47,9 @@ async def get_calc(
     expression: Dict[str:str] = phrase.dict()
     try:
         expression['result'] = eval(expression['phrase'])
-    except ZeroDivisionError:
+    except Exception:
         return PlainTextResponse(
-            content='Division by zero is not possible',
+            content='Bad operands or operators',
             status_code=status.HTTP_400_BAD_REQUEST
         )
     result_text: str = '{phrase} = {result}'
@@ -67,9 +65,9 @@ async def calculator(phrase: BodyPhrase) -> JSONResponse:
     expression: Dict[str:str] = phrase.dict()
     try:
         expression['result'] = eval(expression['phrase'])
-    except ZeroDivisionError:
+    except Exception:
         return JSONResponse(
-            content={'error': 'Division by zero is not possible'},
+            content={'error': 'Bad operands or operators'},
             status_code=status.HTTP_400_BAD_REQUEST
         )
     result_text: str = '{phrase} = {result}'
