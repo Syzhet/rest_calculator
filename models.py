@@ -1,0 +1,41 @@
+from typing import Union
+
+from pydantic import BaseModel, validator
+from fastapi import Query
+import re
+
+
+REGEX_FOR_CHECK_PHRASE = re.compile(
+    r'([-+()]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)'
+)
+
+
+class QueryPhrase(BaseModel):
+    """Model class for working with the string parameter."""
+
+    phrase: str = Query(max_length=100)
+
+    @validator('phrase')
+    def check_query_phrase(cls, value) -> Union[str, Exception]:
+        """Value validation method."""
+
+        value: str = value.strip().replace(' ', '+')
+        if REGEX_FOR_CHECK_PHRASE.match(value):
+            return value
+        else:
+            raise ValueError(
+                'Only one of the following operators is possible "+", "-","/", "*"'
+            )
+
+
+class BodyPhrase(BaseModel):
+    phrase: str
+
+    @validator('phrase')
+    def check_body_phrase(cls, value) -> Union[str, Exception]:
+        if REGEX_FOR_CHECK_PHRASE.match(value):
+            return value
+        else:
+            raise ValueError(
+                'Only one of the following operators is possible "+", "-","/", "*"'
+            )
