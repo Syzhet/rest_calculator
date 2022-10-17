@@ -1,12 +1,12 @@
 # rest_calculator
 
-## REST API - онлайн-кальклятор.
+## REST API - онлайн-калькулятор.
 
 Исходный функционал:
 - Выполнение простых математических операций.
 - Валидация передаваемых значений.
 - Документация по API.
-- Запуск в docker-контэнере.
+- Запуск в docker-контейнере.
 
 
 ## Стек технологий 
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
-# Запуск проекта в Docker контейнере
+# Запуск проекта в Docker-контейнере
 Установите Docker и docker-compose
 ```sh
 sudo apt install docker.io 
@@ -61,12 +61,12 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-Cоздайте файл .env в корневой директории проекта содержанием:
+Cоздайте файл .env в директории с файлом docker-compose.yaml:
 - REP_NAME= имя репозитория на Docker Hub (либо внесите изменения в файл docker-compose.yaml для сборки и запуска контейнера локально);
 - TAG= версия ообраза docker;
 - PORT= порт для отправки http запросов.
 
-Параметры запуска описаны в файлах docker-compose.yml.
+Параметры запуска описаны в файлах docker-compose.yaml.
 
 Запустите docker-compose:
 ```sh
