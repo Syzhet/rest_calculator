@@ -24,7 +24,8 @@ class QueryPhrase(BaseModel):
             return value
         else:
             raise ValueError(
-                'Only one of the following operators is possible "+", "-","/", "*"'
+                ('Only one of the following operators '
+                 'is possible "+", "-","/", "*"')
             )
 
 
@@ -37,5 +38,6 @@ class BodyPhrase(BaseModel):
             return value
         else:
             raise ValueError(
-                'Only one of the following operators is possible "+", "-","/", "*"'
+                ('Only one of the following operators '
+                 'is possible "+", "-","/", "*"')
             )

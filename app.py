@@ -43,14 +43,14 @@ async def index() -> PlainTextResponse:
 @app.get('/eval', status_code=status.HTTP_200_OK)
 async def get_calc(
     phrase: QueryPhrase = Depends(QueryPhrase)
-    ) -> PlainTextResponse:
+) -> PlainTextResponse:
     """Get request handler with string parameter."""
 
     expression: Dict[str:str] = phrase.dict()
     try:
         expression['result'] = eval(expression['phrase'])
     except ZeroDivisionError:
-        return  PlainTextResponse(
+        return PlainTextResponse(
             content='Division by zero is not possible',
             status_code=status.HTTP_400_BAD_REQUEST
         )
@@ -68,7 +68,7 @@ async def calculator(phrase: BodyPhrase) -> JSONResponse:
     try:
         expression['result'] = eval(expression['phrase'])
     except ZeroDivisionError:
-        return  JSONResponse(
+        return JSONResponse(
             content={'error': 'Division by zero is not possible'},
             status_code=status.HTTP_400_BAD_REQUEST
         )
