@@ -1,3 +1,5 @@
+![Build Status](https://github.com/Syzhet/rest_calculator/actions/workflows/restcalc.yml/badge.svg)
+
 # rest_calculator
 
 ## REST API - онлайн-калькулятор.
@@ -7,6 +9,7 @@
 - Валидация передаваемых значений.
 - Документация по API.
 - Запуск в docker-контейнере.
+- Автоматическое тестирование и push на Docker Hub при загрузке кода на GitHub.
 
 
 ## Стек технологий 
