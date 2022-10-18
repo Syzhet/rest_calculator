@@ -46,7 +46,7 @@ async def get_calc(
 
     expression: Dict[str:str] = phrase.dict()
     try:
-        expression['result'] = eval(expression['phrase'])
+        expression['result'] = start_calculation(expression['phrase'])
     except Exception:
         return PlainTextResponse(
             content='Bad operands or operators',
@@ -64,7 +64,7 @@ async def calculator(phrase: BodyPhrase) -> JSONResponse:
 
     expression: Dict[str:str] = phrase.dict()
     try:
-        expression['result'] = eval(expression['phrase'])
+        expression['result'] = start_calculation(expression['phrase'])
     except Exception:
         return JSONResponse(
             content={'error': 'Bad operands or operators'},

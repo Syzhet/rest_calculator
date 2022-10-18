@@ -2,7 +2,7 @@ import operator
 from typing import Callable, List, Dict, Any, Union, Generator
 
 
-MATH_CALC_DICT: Dict[str, Callable[[int, int], int]] = {
+MATH_CALC_DICT: Dict[str, Callable[[float, float], float]] = {
     '+': (1, operator.add),
     '-': (1, operator.sub),
     '*': (2, operator.mul),

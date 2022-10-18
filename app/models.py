@@ -22,10 +22,7 @@ class QueryPhrase(BaseModel):
         if REGEX_FOR_CHECK_PHRASE.match(value):
             return value
         else:
-            raise ValueError(
-                ('Only one of the following operators '
-                 'is possible "+", "-","/", "*"')
-            )
+            raise ValueError('Bad operands or operators')
 
 
 class BodyPhrase(BaseModel):
@@ -36,7 +33,4 @@ class BodyPhrase(BaseModel):
         if REGEX_FOR_CHECK_PHRASE.match(value):
             return value
         else:
-            raise ValueError(
-                ('Only one of the following operators '
-                 'is possible "+", "-","/", "*"')
-            )
+            raise ValueError('Bad operands or operators')
