@@ -5,6 +5,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse
 
 from .models import BodyPhrase, QueryPhrase
+from .calculator import start_calculation
 
 app: FastAPI = FastAPI()
 
