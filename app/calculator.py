@@ -1,6 +1,5 @@
 import operator
-from typing import Callable, List, Dict, Any, Union, Generator
-
+from typing import Any, Callable, Dict, Generator, List, Union
 
 MATH_CALC_DICT: Dict[str, Callable[[float, float], float]] = {
     '+': (1, operator.add),

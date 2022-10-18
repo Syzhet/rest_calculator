@@ -4,8 +4,8 @@ from fastapi import Depends, FastAPI, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse
 
-from .models import BodyPhrase, QueryPhrase
 from .calculator import start_calculation
+from .models import BodyPhrase, QueryPhrase
 
 app: FastAPI = FastAPI()
 
