@@ -1,9 +1,8 @@
+import re
 from typing import Union
 
-from pydantic import BaseModel, validator
 from fastapi import Query
-import re
-
+from pydantic import BaseModel, validator
 
 REGEX_FOR_CHECK_PHRASE = re.compile(
     r'([-+()]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)'

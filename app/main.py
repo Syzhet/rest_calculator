@@ -1,11 +1,10 @@
 from typing import Dict, Union
 
-from fastapi import FastAPI, Depends, status
-from fastapi.responses import PlainTextResponse, JSONResponse
+from fastapi import Depends, FastAPI, status
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse, PlainTextResponse
 
-from .models import QueryPhrase, BodyPhrase
-
+from .models import BodyPhrase, QueryPhrase
 
 app: FastAPI = FastAPI()
 
