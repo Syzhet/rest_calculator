@@ -15,7 +15,7 @@ class QueryPhrase(BaseModel):
     phrase: str = Query(max_length=100)
 
     @validator('phrase')
-    def check_query_phrase(cls, value) -> Union[str, Exception]:
+    def check_query_phrase(self, value) -> Union[str, Exception]:
         """Value validation method."""
 
         value: str = value.strip().replace(' ', '+')
@@ -32,7 +32,7 @@ class BodyPhrase(BaseModel):
     phrase: str
 
     @validator('phrase')
-    def check_body_phrase(cls, value) -> Union[str, Exception]:
+    def check_body_phrase(self, value) -> Union[str, Exception]:
         if REGEX_FOR_CHECK_PHRASE.match(value):
             return value
         else:
