@@ -21,7 +21,7 @@ def test_query_get() -> None:
         params={'phrase': '(2+2)*2'}
     )
     assert response.status_code == 200
-    assert response.text == '(2+2)*2 = 8'
+    assert response.text == '(2+2)*2 = 8.0'
 
 
 def test_fail_query_get() -> None:
@@ -43,7 +43,7 @@ def test_body_post() -> None:
         json={'phrase': '(2+2)*2'}
     )
     assert response.status_code == 201
-    assert response.json() == {'result': '(2+2)*2 = 8'}
+    assert response.json() == {'result': '(2+2)*2 = 8.0'}
 
 
 def test_fail_body_post() -> None:
